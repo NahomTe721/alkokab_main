@@ -7,9 +7,9 @@ import { Capabilities } from "@/components/site/Capabilities";
 import { MaskSequence } from "@/components/site/MaskSequence";
 import { SiteFooter } from "@/components/site/SiteFooter";
 
-const TITLE = "Alkokab Tech Solutions | Enterprise IT & Cloud in Dubai";
+const TITLE = "Alkokab Tech Solutions | End-to-End Solutions from Dubai";
 const DESCRIPTION =
-  "Alkokab Tech Solutions is a Dubai-based enterprise technology partner delivering cloud, infrastructure, cyber security, enterprise AI, digital printing and solar solutions across the UAE.";
+  "Alkokab Tech Solutions is a Dubai-based partner delivering end-to-end solutions across technology, trade, finance and operations — supporting governments, institutions and development partners across GCC and African markets.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -33,7 +33,6 @@ function Index() {
         <CoreValues />
         <Capabilities />
         <MaskSequence />
-
       </main>
       <SiteFooter />
     </div>

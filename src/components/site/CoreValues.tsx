@@ -4,9 +4,21 @@ import { Handshake, Lightbulb, Network } from "lucide-react";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const NODES = [
-  { label: "Technology", Icon: Network, copy: "Platforms, infrastructure and security engineered to enterprise standard." },
-  { label: "Innovation", Icon: Lightbulb, copy: "Applied AI and automation that produce measurable commercial gains." },
-  { label: "Partnerships", Icon: Handshake, copy: "Long-horizon alliances with global vendors and regional clients." },
+  {
+    label: "Technology",
+    Icon: Network,
+    copy: "Implementation and improvement of systems that support operations and performance.",
+  },
+  {
+    label: "Innovation",
+    Icon: Lightbulb,
+    copy: "Strategic guidance, positioning and communication that turn initiatives into outcomes.",
+  },
+  {
+    label: "Partnerships",
+    Icon: Handshake,
+    copy: "Coordination across stakeholders, international partners and on-the-ground delivery.",
+  },
 ];
 
 export function CoreValues() {
@@ -14,9 +26,9 @@ export function CoreValues() {
     <section className="relative overflow-hidden bg-surface py-20 lg:py-28">
       <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
         <div className="text-center">
-          <span className="eyebrow text-accent-deep">The Core of Alkokab</span>
+          <span className="eyebrow text-accent-deep">How We Deliver</span>
           <h2 className="mt-4 font-display text-3xl font-extrabold text-primary sm:text-[2.6rem]">
-            Core of Alkokab
+            Built Around Execution
           </h2>
         </div>
 
@@ -52,7 +64,6 @@ export function CoreValues() {
           </svg>
 
           <div className="relative z-10 grid gap-10 lg:grid-cols-3 lg:gap-6">
-
             {NODES.map((node, i) => (
               <motion.div
                 key={node.label}
@@ -63,12 +74,13 @@ export function CoreValues() {
                 className={`flex flex-col items-center text-center ${
                   i === 1 ? "lg:-translate-y-12" : ""
                 }`}
-
               >
                 <div className="flex h-40 w-40 items-center justify-center rounded-full border border-border bg-card shadow-card transition-transform duration-500 hover:-translate-y-1.5">
                   <div className="flex h-28 w-28 flex-col items-center justify-center gap-2 rounded-full bg-surface">
                     <node.Icon className="h-8 w-8 text-accent-deep" strokeWidth={1.6} />
-                    <span className="font-display text-[13px] font-bold text-primary">{node.label}</span>
+                    <span className="font-display text-[13px] font-bold text-primary">
+                      {node.label}
+                    </span>
                   </div>
                 </div>
                 <p className="mt-6 max-w-[19rem] text-sm leading-relaxed text-muted-foreground">

@@ -10,43 +10,91 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SolutionsItTransformationRouteImport } from './routes/solutions.it-transformation'
+import { Route as SolutionsLogisticsRouteImport } from './routes/solutions.logistics'
+import { Route as SolutionsSourcingRouteImport } from './routes/solutions.sourcing'
+import { Route as SolutionsSupplyChainFinanceRouteImport } from './routes/solutions.supply-chain-finance'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
+const SolutionsItTransformationRoute =
+  SolutionsItTransformationRouteImport.update({
+    id: '/solutions/it-transformation',
+    path: '/solutions/it-transformation',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SolutionsLogisticsRoute = SolutionsLogisticsRouteImport.update({
+  id: '/solutions/logistics',
+  path: '/solutions/logistics',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SolutionsSourcingRoute = SolutionsSourcingRouteImport.update({
+  id: '/solutions/sourcing',
+  path: '/solutions/sourcing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolutionsSupplyChainFinanceRoute =
+  SolutionsSupplyChainFinanceRouteImport.update({
+    id: '/solutions/supply-chain-finance',
+    path: '/solutions/supply-chain-finance',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/services': typeof ServicesRoute
+  '/solutions/it-transformation': typeof SolutionsItTransformationRoute
+  '/solutions/logistics': typeof SolutionsLogisticsRoute
+  '/solutions/sourcing': typeof SolutionsSourcingRoute
+  '/solutions/supply-chain-finance': typeof SolutionsSupplyChainFinanceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/services': typeof ServicesRoute
+  '/solutions/it-transformation': typeof SolutionsItTransformationRoute
+  '/solutions/logistics': typeof SolutionsLogisticsRoute
+  '/solutions/sourcing': typeof SolutionsSourcingRoute
+  '/solutions/supply-chain-finance': typeof SolutionsSupplyChainFinanceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/services': typeof ServicesRoute
+  '/solutions/it-transformation': typeof SolutionsItTransformationRoute
+  '/solutions/logistics': typeof SolutionsLogisticsRoute
+  '/solutions/sourcing': typeof SolutionsSourcingRoute
+  '/solutions/supply-chain-finance': typeof SolutionsSupplyChainFinanceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/services'
+  fullPaths:
+    | '/'
+    | '/solutions/it-transformation'
+    | '/solutions/logistics'
+    | '/solutions/sourcing'
+    | '/solutions/supply-chain-finance'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/services'
-  id: '__root__' | '/' | '/services'
+  to:
+    | '/'
+    | '/solutions/it-transformation'
+    | '/solutions/logistics'
+    | '/solutions/sourcing'
+    | '/solutions/supply-chain-finance'
+  id:
+    | '__root__'
+    | '/'
+    | '/solutions/it-transformation'
+    | '/solutions/logistics'
+    | '/solutions/sourcing'
+    | '/solutions/supply-chain-finance'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ServicesRoute: typeof ServicesRoute
+  SolutionsItTransformationRoute: typeof SolutionsItTransformationRoute
+  SolutionsLogisticsRoute: typeof SolutionsLogisticsRoute
+  SolutionsSourcingRoute: typeof SolutionsSourcingRoute
+  SolutionsSupplyChainFinanceRoute: typeof SolutionsSupplyChainFinanceRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,11 +106,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
+    '/solutions/it-transformation': {
+      id: '/solutions/it-transformation'
+      path: '/solutions/it-transformation'
+      fullPath: '/solutions/it-transformation'
+      preLoaderRoute: typeof SolutionsItTransformationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions/logistics': {
+      id: '/solutions/logistics'
+      path: '/solutions/logistics'
+      fullPath: '/solutions/logistics'
+      preLoaderRoute: typeof SolutionsLogisticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions/sourcing': {
+      id: '/solutions/sourcing'
+      path: '/solutions/sourcing'
+      fullPath: '/solutions/sourcing'
+      preLoaderRoute: typeof SolutionsSourcingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions/supply-chain-finance': {
+      id: '/solutions/supply-chain-finance'
+      path: '/solutions/supply-chain-finance'
+      fullPath: '/solutions/supply-chain-finance'
+      preLoaderRoute: typeof SolutionsSupplyChainFinanceRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -70,7 +139,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ServicesRoute: ServicesRoute,
+  SolutionsItTransformationRoute: SolutionsItTransformationRoute,
+  SolutionsLogisticsRoute: SolutionsLogisticsRoute,
+  SolutionsSourcingRoute: SolutionsSourcingRoute,
+  SolutionsSupplyChainFinanceRoute: SolutionsSupplyChainFinanceRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -5,9 +5,21 @@ import vr from "@/assets/capability-vr.webp";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const BADGES = [
-  { label: "Cloud", Icon: CloudCog, copy: "Hyperscaler advisory, migration and managed operations." },
-  { label: "Digital Printing", Icon: Printer, copy: "Production print and document technology at scale." },
-  { label: "Solar", Icon: SunMedium, copy: "Clean-energy systems for facilities and smart sites." },
+  {
+    label: "Technology",
+    Icon: CloudCog,
+    copy: "We bring together the right mix of technical, commercial and operational support to match each project's real requirements.",
+  },
+  {
+    label: "Trade & Sourcing",
+    Icon: Printer,
+    copy: "From planning and sourcing to execution and follow-through, every stage is managed as part of one continuous process.",
+  },
+  {
+    label: "Logistics & Delivery",
+    Icon: SunMedium,
+    copy: "Across GCC and African markets, we coordinate multi-country delivery through our international partnerships.",
+  },
 ];
 
 export function Capabilities() {
@@ -26,7 +38,7 @@ export function Capabilities() {
               <div className="clip-hept relative">
                 <img
                   src={vr}
-                  alt="Consultant working with an immersive enterprise interface"
+                  alt="Multidisciplinary team coordinating complex project delivery"
                   width={1200}
                   height={1408}
                   loading="lazy"
@@ -36,7 +48,6 @@ export function Capabilities() {
               </div>
             </div>
           </div>
-
         </motion.div>
 
         <div>
@@ -46,10 +57,14 @@ export function Capabilities() {
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.8, ease: EASE }}
           >
-            <span className="eyebrow text-accent-deep">Featured Capabilities</span>
+            <span className="eyebrow text-accent-deep">What We Do</span>
             <h2 className="gold-rule mt-4 font-display text-3xl font-extrabold leading-tight text-primary sm:text-[2.4rem]">
-              Three practices, one delivery standard.
+              An integrated project approach, delivered end to end.
             </h2>
+            <p className="mt-6 text-[15.5px] leading-relaxed text-muted-foreground">
+              We approach each project as one connected system — not isolated tasks — ensuring every
+              moving part works together from the start.
+            </p>
           </motion.div>
 
           <div className="mt-10 space-y-5">

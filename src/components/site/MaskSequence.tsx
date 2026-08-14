@@ -1,11 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useSpring,
-  type MotionValue,
-} from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, type MotionValue } from "framer-motion";
 import { Award, BadgeCheck, Globe2, ShieldCheck } from "lucide-react";
 import reveal from "@/assets/apart-reveal.webp";
 import techBg from "@/assets/k-tech-white-gold.webp";
@@ -34,13 +28,10 @@ function PortalContent({ certsTextOpacity, imageOpacity }: LayerProps) {
       {/* Certifications layer */}
       <div className="absolute inset-0 flex flex-col items-center justify-center bg-primary px-4 text-center sm:px-5">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,oklch(0.31_0.05_250)_0%,transparent_70%)]" />
-        <motion.div
-          style={{ opacity: certsTextOpacity }}
-          className="relative w-full max-w-5xl"
-        >
+        <motion.div style={{ opacity: certsTextOpacity }} className="relative w-full max-w-5xl">
           <span className="eyebrow text-accent">What Sets Us Apart</span>
           <h2 className="mx-auto mt-4 max-w-3xl font-display text-[19px] font-extrabold leading-tight text-primary-foreground sm:text-4xl lg:text-5xl">
-            Certified engineering, regional logistics and vendor access under one roof.
+            Technical, commercial and operational services coordinated into one continuous process.
           </h2>
           <div className="mt-8 grid grid-cols-2 gap-px border border-primary-foreground/15 bg-primary-foreground/15 sm:mt-12 lg:grid-cols-4">
             {CERTS.map((c) => (
@@ -65,13 +56,13 @@ function PortalContent({ certsTextOpacity, imageOpacity }: LayerProps) {
       <motion.div style={{ opacity: imageOpacity }} className="absolute inset-0 bg-primary">
         <img
           src={reveal}
-          alt="High-technology enterprise infrastructure visualisation"
+          alt="Large-scale project delivery coordinated across systems and operations"
           className="h-full w-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-primary/45" />
         <div className="absolute inset-x-0 bottom-12 px-6 text-center sm:bottom-16">
           <p className="mx-auto max-w-2xl font-display text-lg font-extrabold leading-snug text-primary-foreground sm:text-3xl">
-            Enterprise-grade infrastructure, engineered and operated from Dubai.
+            Complex initiatives turned into delivered projects, coordinated from Dubai.
           </p>
         </div>
       </motion.div>
@@ -97,8 +88,8 @@ function PartnerContent() {
         PARTNER WITH US
       </h2>
       <p className="max-w-md text-center text-[14.5px] leading-relaxed text-muted-foreground">
-        Global vendors entering the Gulf and enterprises modernising their estate —
-        our Dubai team maps the path forward.
+        Governments, institutions and development partners — our Dubai team maps the path from
+        initiative to delivered outcome.
       </p>
       <a
         href="#contact"
@@ -265,4 +256,3 @@ export function MaskSequence() {
     </>
   );
 }
-

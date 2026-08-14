@@ -10,11 +10,31 @@ import hero5 from "@/assets/hero-5.webp";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const SLIDES = [
-  { src: hero1, kicker: "Cloud & Data Centre", tagline: "Enterprise cloud engineered for the pace of Dubai business." },
-  { src: hero2, kicker: "Regional Reach", tagline: "A Dubai-headquartered technology partner for the wider Gulf." },
-  { src: hero3, kicker: "Digital Transformation", tagline: "Turning enterprise ambition into deployed technology outcomes." },
-  { src: hero4, kicker: "Infrastructure", tagline: "Future-ready hardware, delivered, configured and supported." },
-  { src: hero5, kicker: "Energy & Smart Sites", tagline: "Solar and smart infrastructure that lowers the cost of growth." },
+  {
+    src: hero1,
+    kicker: "Designing & Delivering",
+    tagline: "Large-scale projects that work in the real world.",
+  },
+  {
+    src: hero2,
+    kicker: "Connected Capabilities",
+    tagline: "Technology, trade, finance and operations aligned to deliver.",
+  },
+  {
+    src: hero3,
+    kicker: "Real-World Execution",
+    tagline: "Complex initiatives turned into delivered projects.",
+  },
+  {
+    src: hero4,
+    kicker: "End-to-End Delivery",
+    tagline: "Every stage managed as one continuous process.",
+  },
+  {
+    src: hero5,
+    kicker: "Delivered Projects",
+    tagline: "Coordinated delivery across GCC and African markets.",
+  },
 ];
 
 export function HeroCarousel() {
@@ -29,6 +49,18 @@ export function HeroCarousel() {
     setIndex(((next % SLIDES.length) + SLIDES.length) % SLIDES.length);
   }, []);
 
+  const handleHeroClick = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
+    if (target.startsWith("/#")) {
+      e.preventDefault();
+      const hash = target.substring(1);
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", hash);
+      }
+    }
+  };
+
   useEffect(() => {
     const t = setInterval(() => setIndex((i) => (i + 1) % SLIDES.length), 6200);
     return () => clearInterval(t);
@@ -37,7 +69,10 @@ export function HeroCarousel() {
   const slide = SLIDES[index]!;
 
   return (
-    <section id="top" className="relative h-[86vh] min-h-[560px] w-full overflow-hidden bg-primary pt-20">
+    <section
+      id="top"
+      className="relative h-[86vh] min-h-[560px] w-full overflow-hidden bg-primary pt-20"
+    >
       <AnimatePresence initial={false}>
         <motion.img
           key={index}
@@ -48,7 +83,10 @@ export function HeroCarousel() {
           initial={ready ? { opacity: 0, scale: 1.08 } : false}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ opacity: { duration: 1.1, ease: EASE }, scale: { duration: 7, ease: "linear" } }}
+          transition={{
+            opacity: { duration: 1.1, ease: EASE },
+            scale: { duration: 7, ease: "linear" },
+          }}
           className="absolute inset-0 h-full w-full object-cover"
         />
       </AnimatePresence>
@@ -76,14 +114,25 @@ export function HeroCarousel() {
             <p className="mt-6 max-w-xl text-base leading-relaxed text-primary-foreground/85 sm:text-lg">
               {slide.tagline}
             </p>
-            <a
-              href="/services"
-              className="group mt-9 inline-flex items-center gap-3 bg-gold px-7 py-4 text-[13px] font-bold uppercase tracking-[0.14em] text-accent-foreground transition-all duration-500"
-              style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
-            >
-              Discover Alkokab
-              <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1.5" />
-            </a>
+            <div className="mt-9 flex flex-wrap items-center gap-4">
+              <a
+                href="/#apart"
+                onClick={(e) => handleHeroClick(e, "/#apart")}
+                className="group inline-flex items-center gap-3 bg-gold px-7 py-4 text-[13px] font-bold uppercase tracking-[0.14em] text-accent-foreground transition-all duration-500"
+                style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
+              >
+                Explore Our Projects
+                <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1.5" />
+              </a>
+              <a
+                href="/#contact"
+                onClick={(e) => handleHeroClick(e, "/#contact")}
+                className="inline-flex items-center gap-3 border-2 border-primary-foreground/70 px-7 py-4 text-[13px] font-bold uppercase tracking-[0.14em] text-primary-foreground transition-colors duration-500 hover:border-gold hover:text-accent"
+                style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
+              >
+                Partner With Us
+              </a>
+            </div>
           </motion.div>
         </AnimatePresence>
 

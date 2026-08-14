@@ -25,8 +25,9 @@ export function SiteFooter() {
               </span>
             </div>
             <p className="mt-5 max-w-sm text-[13.5px] leading-relaxed text-muted-foreground">
-              A Dubai-headquartered technology enterprise delivering cloud, infrastructure,
-              security and energy solutions across the UAE and wider Gulf.
+              A Dubai-headquartered partner delivering end-to-end solutions across technology,
+              trade, finance and operations — supporting governments, institutions and development
+              partners across GCC and African markets.
             </p>
             <div className="mt-6 flex gap-3">
               <a

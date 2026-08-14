@@ -18,7 +18,7 @@ export function AboutSection() {
           <span className="absolute -left-4 -top-4 hidden h-24 w-24 border-l-[3px] border-t-[3px] border-accent lg:block" />
           <img
             src={team}
-            alt="Alkokab consultants collaborating with clients in Dubai"
+            alt="Multidisciplinary team coordinating end-to-end project delivery from Dubai"
             width={1408}
             height={1104}
             loading="lazy"
@@ -37,21 +37,28 @@ export function AboutSection() {
           transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
         >
           <span className="eyebrow inline-block border border-accent/60 bg-accent-soft px-4 py-2 text-accent-foreground">
-            Reducing Technology Friction
+            Who We Are
           </span>
           <h2 className="gold-rule mt-6 font-display text-3xl font-extrabold leading-tight text-primary sm:text-[2.6rem]">
-            We remove the friction between enterprise ambition and technology delivery.
+            A multidisciplinary company built around execution.
           </h2>
           <p className="mt-7 text-[15.5px] leading-relaxed text-muted-foreground">
-            Alkokab Tech Solutions is a Dubai-based technology enterprise working with
-            government, banking, retail and industrial organisations across the UAE. We
-            consolidate advisory, procurement, deployment and lifecycle support into one
-            accountable partnership.
+            We bring technical, commercial and operational services together under one roof —
+            spanning IT transformation, trade, supply chain finance, sourcing, logistics,
+            consulting, marketing and events — supporting clients across standalone service needs
+            and larger project engagements.
           </p>
           <p className="mt-4 text-[15.5px] leading-relaxed text-muted-foreground">
-            From cloud platforms and cyber security to digital printing and solar, our
-            engineers design systems that are commercially sound today and extensible for
-            the next decade of growth.
+            We have delivered projects that pair digital systems with hands-on, on-the-ground
+            implementation, particularly in public sector and institutional settings. A flagship
+            engagement saw us support the rollout of a biometrically integrated payroll management
+            system in South Sudan, delivered under the wider IFMIS expansion programme financed by
+            the World Bank — covering the deployment of biometric devices, large-scale civil servant
+            data collection, and training of personnel across the registration processes.
+          </p>
+          <p className="mt-4 text-[15.5px] leading-relaxed text-muted-foreground">
+            With headquarters in Dubai, our work spans GCC and African markets, with a strong
+            presence in East Africa and active engagement across multiple countries.
           </p>
           <a
             href="#apart"
