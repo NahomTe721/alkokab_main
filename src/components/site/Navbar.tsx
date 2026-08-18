@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, Menu, Phone, X } from "lucide-react";
-import { AboutModal } from "@/components/site/AboutModal";
+import { ChevronDown, Menu, X } from "lucide-react";
 const mark = "/logo.png";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -12,11 +11,11 @@ type NavItem = { label: string; to?: string; items: string[] };
 const NAV: NavItem[] = [
   {
     label: "About Us",
-    items: ["Overview", "Management Team", "Board of Directors", "Our Presence", "Careers"],
+    items: ["About Alkokab Tech", "Overview", "Our Presence", "Careers"],
   },
   {
     label: "Solutions",
-    items: ["IT Transformation", "Logistics", "Sourcing", "Supply Chain Finance"],
+    items: ["Technology Transformation", "Logistics", "Sourcing", "Supply Chain Finance"],
   },
   {
     label: "Brands",
@@ -28,26 +27,9 @@ const NAV: NavItem[] = [
   },
 ];
 
-const ABOUT_SECTIONS = new Set([
-  "Overview",
-  "Management Team",
-  "Board of Directors",
-  "Our Presence",
-  "Careers",
-]);
-
-const SOLUTION_ROUTES = [
-  "/solutions/it-transformation",
-  "/solutions/logistics",
-  "/solutions/sourcing",
-  "/solutions/supply-chain-finance",
-] as const;
-
-type SolutionRoute = (typeof SOLUTION_ROUTES)[number];
-
 const LINK_MAP: Record<string, string> = {
   // Solutions
-  "IT Transformation": "/solutions/it-transformation",
+  "Technology Transformation": "/solutions/technology-transformation",
   Logistics: "/solutions/logistics",
   Sourcing: "/solutions/sourcing",
   "Supply Chain Finance": "/solutions/supply-chain-finance",
@@ -64,11 +46,24 @@ const LINK_MAP: Record<string, string> = {
   Support: "/#contact",
 };
 
+const ABOUT_LINK_MAP: Record<string, string> = {
+  "About Alkokab Tech": "/about/overview",
+  Overview: "/about/company-overview",
+  "Our Presence": "/about/our-presence",
+  Careers: "/about/careers",
+};
+
+const SOLUTION_ROUTES = new Set([
+  "/solutions/technology-transformation",
+  "/solutions/logistics",
+  "/solutions/sourcing",
+  "/solutions/supply-chain-finance",
+]);
+
 export function Navbar() {
   const [open, setOpen] = useState<string | null>(null);
   const [mobile, setMobile] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [modal, setModal] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -77,7 +72,6 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobile) {
       document.body.style.overflow = "hidden";
@@ -89,15 +83,9 @@ export function Navbar() {
     };
   }, [mobile]);
 
-  const openModal = (section: string) => {
-    setMobile(false);
-    setOpen(null);
-    setModal(section);
-  };
-
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
     if (target.startsWith("/#")) {
-      const hash = target.substring(1); // e.g., "#about"
+      const hash = target.substring(1);
       if (window.location.pathname === "/") {
         e.preventDefault();
         setMobile(false);
@@ -118,7 +106,6 @@ export function Navbar() {
         window.history.pushState(null, "", target);
       }
     } else {
-      // Normal routing navigation, just close drawer
       setMobile(false);
       setOpen(null);
     }
@@ -129,25 +116,30 @@ export function Navbar() {
   const subLinkMobileClass =
     "text-[12.5px] text-muted-foreground transition-colors hover:text-primary";
 
-  const renderSubItem = (sub: string, isMobile: boolean) => {
-    const href = LINK_MAP[sub] || "/#top";
+  const renderSubItem = (sub: string, isMobile: boolean, parentLabel?: string) => {
+    const isAbout = parentLabel === "About Us";
+    const href = isAbout ? (ABOUT_LINK_MAP[sub] || "/#top") : (LINK_MAP[sub] || "/#top");
     const cls = isMobile ? subLinkMobileClass : subLinkClass;
 
-    if (ABOUT_SECTIONS.has(sub)) {
+    if (isAbout && ABOUT_LINK_MAP[sub]) {
       return (
-        <button
-          onClick={() => openModal(sub)}
-          className={`${cls} ${isMobile ? "cursor-pointer" : "w-full cursor-pointer text-left"}`}
+        <Link
+          to={href as "/about/overview" | "/about/technology-transformation" | "/about/logistics" | "/about/sourcing" | "/about/supply-chain-finance"}
+          onClick={() => {
+            setMobile(false);
+            setOpen(null);
+          }}
+          className={cls}
         >
           {sub}
-        </button>
+        </Link>
       );
     }
 
-    if (href.startsWith("/solutions/")) {
+    if (SOLUTION_ROUTES.has(href)) {
       return (
         <Link
-          to={href as SolutionRoute}
+          to={href as "/solutions/it-transformation" | "/solutions/logistics" | "/solutions/sourcing" | "/solutions/supply-chain-finance"}
           onClick={() => {
             setMobile(false);
             setOpen(null);
@@ -231,7 +223,7 @@ export function Navbar() {
                       <span className="block h-[3px] w-full bg-gold" />
                       <ul className="p-2">
                         {item.items.map((sub) => (
-                          <li key={sub}>{renderSubItem(sub, false)}</li>
+                          <li key={sub}>{renderSubItem(sub, false, item.label)}</li>
                         ))}
                       </ul>
                     </motion.div>
@@ -248,8 +240,7 @@ export function Navbar() {
             onClick={(e) => handleNavClick(e, "#contact")}
             className="group inline-flex items-center gap-2 bg-primary px-5 py-3 text-[12.5px] font-bold text-primary-foreground transition-colors duration-300 hover:bg-primary-light"
           >
-            <Phone className="h-3.5 w-3.5 text-accent" />
-            +971 4 000 0000
+            Partner With Us
           </a>
         </div>
 
@@ -287,7 +278,7 @@ export function Navbar() {
                       <p className="font-display text-sm font-bold text-primary">{item.label}</p>
                       <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1.5">
                         {item.items.map((sub) => (
-                          <span key={sub}>{renderSubItem(sub, true)}</span>
+                          <span key={sub}>{renderSubItem(sub, true, item.label)}</span>
                         ))}
                       </div>
                     </>
@@ -298,8 +289,6 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <AboutModal open={modal !== null} section={modal} onClose={() => setModal(null)} />
     </header>
   );
 }

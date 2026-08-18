@@ -3,6 +3,7 @@ import { Navbar } from "@/components/site/Navbar";
 import { HeroCarousel } from "@/components/site/HeroCarousel";
 import { AboutSection } from "@/components/site/AboutSection";
 import { CoreValues } from "@/components/site/CoreValues";
+import { HowWeWork } from "@/components/site/HowWeWork";
 import { Capabilities } from "@/components/site/Capabilities";
 import { MaskSequence } from "@/components/site/MaskSequence";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -31,6 +32,7 @@ function Index() {
         <HeroCarousel />
         <AboutSection />
         <CoreValues />
+        <HowWeWork />
         <Capabilities />
         <MaskSequence />
       </main>

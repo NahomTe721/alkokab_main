@@ -120,8 +120,7 @@ export function AboutModal({ open, section, onClose }: AboutModalProps) {
             </button>
 
             <div className="max-h-[70vh] overflow-y-auto p-7 lg:p-10">
-              <span className="eyebrow inline-flex items-center gap-2 text-accent-deep">
-                <span className="h-[2px] w-8 bg-gold" />
+              <span className="eyebrow text-accent-deep">
                 About Us
               </span>
               <h3 className="gold-rule mt-5 font-display text-2xl font-extrabold text-primary lg:text-[2rem]">

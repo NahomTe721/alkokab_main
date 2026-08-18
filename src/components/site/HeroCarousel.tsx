@@ -13,27 +13,42 @@ const SLIDES = [
   {
     src: hero1,
     kicker: "Designing & Delivering",
-    tagline: "Large-scale projects that work in the real world.",
+    heading: "ALKOKAB",
+    subheading: "TECH SOLUTIONS",
+    slogan: null,
+    tagline: "Where Strategic Requirements Become Executable Results.",
   },
   {
     src: hero2,
-    kicker: "Connected Capabilities",
-    tagline: "Technology, trade, finance and operations aligned to deliver.",
+    kicker: "Strategic Partner",
+    heading: "Strategic Partner",
+    subheading: null,
+    slogan: null,
+    tagline: "Alkokab Tech is a strategic partner for dependable, structured, and results-driven business solutions.",
   },
   {
     src: hero3,
-    kicker: "Real-World Execution",
-    tagline: "Complex initiatives turned into delivered projects.",
+    kicker: "Integrated Solutions",
+    heading: "Integrated Solutions",
+    subheading: null,
+    slogan: null,
+    tagline: "We integrate technology, sourcing, trade, logistics, finance, and operational support.",
   },
   {
     src: hero4,
-    kicker: "End-to-End Delivery",
-    tagline: "Every stage managed as one continuous process.",
+    kicker: "Seamless Execution",
+    heading: "Seamless Execution",
+    subheading: null,
+    slogan: null,
+    tagline: "We help projects transition seamlessly from planning to successful execution.",
   },
   {
     src: hero5,
-    kicker: "Delivered Projects",
-    tagline: "Coordinated delivery across GCC and African markets.",
+    kicker: "Business Support",
+    heading: "Business Support",
+    subheading: null,
+    slogan: null,
+    tagline: "Dependable support across technology, sourcing, trade, logistics, and finance.",
   },
 ];
 
@@ -103,14 +118,20 @@ export function HeroCarousel() {
             transition={{ duration: 0.75, ease: EASE }}
             className="max-w-3xl"
           >
-            <span className="eyebrow inline-flex items-center gap-2 text-accent">
-              <span className="h-[2px] w-8 bg-gold" />
+            <span className="eyebrow text-accent">
               {slide.kicker}
             </span>
             <h1 className="mt-5 font-display text-[1.9rem] min-[380px]:text-[2.3rem] font-extrabold leading-[1.02] text-primary-foreground sm:text-6xl lg:text-[4.6rem]">
-              ALKOKAB
-              <span className="block bg-gold bg-clip-text text-transparent">TECH SOLUTIONS</span>
+              {slide.heading}
+              {slide.subheading && (
+                <span className="block bg-gold bg-clip-text text-transparent">{slide.subheading}</span>
+              )}
             </h1>
+            {slide.slogan && (
+              <p className="mt-4 max-w-xl text-sm font-semibold uppercase tracking-[0.14em] text-accent sm:text-base">
+                {slide.slogan}
+              </p>
+            )}
             <p className="mt-6 max-w-xl text-base leading-relaxed text-primary-foreground/85 sm:text-lg">
               {slide.tagline}
             </p>

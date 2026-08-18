@@ -5,19 +5,19 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 const NODES = [
   {
-    label: "Technology",
+    label: "Integrated Solutions",
     Icon: Network,
-    copy: "Implementation and improvement of systems that support operations and performance.",
+    copy: "We unify multiple business functions under a single coordinated platform, ensuring clarity, continuity, and operational alignment.",
   },
   {
-    label: "Innovation",
+    label: "Structured Execution",
     Icon: Lightbulb,
-    copy: "Strategic guidance, positioning and communication that turn initiatives into outcomes.",
+    copy: "Our teams support projects from initial planning through implementation, monitoring, and completion, maintaining strict adherence to timelines and deliverables.",
   },
   {
-    label: "Partnerships",
+    label: "Regional & Global Reach",
     Icon: Handshake,
-    copy: "Coordination across stakeholders, international partners and on-the-ground delivery.",
+    copy: "Operating from Dubai with strong access across African markets, we connect clients with suppliers, partners, and opportunities across regional and global ecosystems.",
   },
 ];
 
@@ -27,9 +27,6 @@ export function CoreValues() {
       <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
         <div className="text-center">
           <span className="eyebrow text-accent-deep">How We Deliver</span>
-          <h2 className="mt-4 font-display text-3xl font-extrabold text-primary sm:text-[2.6rem]">
-            Built Around Execution
-          </h2>
         </div>
 
         <div className="relative mt-16 lg:mt-24">

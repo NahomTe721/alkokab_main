@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform, useSpring, type MotionValue } from "framer-motion";
-import { Award, BadgeCheck, Globe2, ShieldCheck } from "lucide-react";
+import { Award, Globe2, Handshake, Layers, Target } from "lucide-react";
 import reveal from "@/assets/apart-reveal.webp";
 import techBg from "@/assets/k-tech-white-gold.webp";
 
@@ -10,10 +10,21 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const K_PATH = "M14 6H35V42L66 6H92L57 50L94 94H66L35 60V94H14Z";
 
 const CERTS = [
-  { label: "ISO 27001", copy: "Information security management", Icon: ShieldCheck },
-  { label: "ISO 9001", copy: "Quality management systems", Icon: BadgeCheck },
-  { label: "Tier III Certified", copy: "Data centre design & operations", Icon: Award },
-  { label: "Global Vendor Alliances", copy: "Authorised regional partner", Icon: Globe2 },
+  { label: "Practical & Implementable Solutions", copy: "We prioritize approaches that can be executed effectively within real business environments.", Icon: Target },
+  { label: "Single Coordinated Partner", copy: "Our broad capabilities allow clients to consolidate multiple requirements through one reliable partner.", Icon: Handshake },
+  { label: "Reliable & Accountable Execution", copy: "We maintain clear coordination, disciplined delivery, and full accountability throughout every engagement.", Icon: Award },
+  { label: "Flexible & Scalable Approach", copy: "Our solutions adapt to the size, sector, and complexity of each project.", Icon: Layers },
+  { label: "Extensive Network", copy: "We connect clients with relevant suppliers, technical specialists, financial resources, and strategic partners.", Icon: Globe2 },
+];
+
+const SERVICES = [
+  { title: "Technology Solutions", copy: "Comprehensive technology products, systems, and implementation support designed around institutional and business requirements." },
+  { title: "Sourcing & Procurement", copy: "Identification, evaluation, and coordination of dependable suppliers for products, equipment, and project-specific needs." },
+  { title: "Import & Export", copy: "Structured support for international trade activities, including supplier coordination, documentation, and cross-border movement of goods." },
+  { title: "Supply Chain Finance", copy: "Financial solutions designed to support procurement cycles, supplier payments, and operational liquidity." },
+  { title: "Logistics & Delivery", copy: "Coordinated transportation, shipment, warehousing, and delivery services ensuring goods reach their destination efficiently and securely." },
+  { title: "Consulting & Business Support", copy: "Practical advisory and operational support enabling organizations to make informed decisions and execute their objectives effectively." },
+  { title: "Marketing & Communication", copy: "Branding, digital communication, and promotional services that strengthen market presence and stakeholder engagement." },
 ];
 
 type LayerProps = {
@@ -25,15 +36,15 @@ type LayerProps = {
 function PortalContent({ certsTextOpacity, imageOpacity }: LayerProps) {
   return (
     <div className="absolute inset-0">
-      {/* Certifications layer */}
+      {/* Certifications layer — Why Alkokab Tech */}
       <div className="absolute inset-0 flex flex-col items-center justify-center bg-primary px-4 text-center sm:px-5">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,oklch(0.31_0.05_250)_0%,transparent_70%)]" />
         <motion.div style={{ opacity: certsTextOpacity }} className="relative w-full max-w-5xl">
-          <span className="eyebrow text-accent">What Sets Us Apart</span>
+          <span className="eyebrow text-accent">Why Alkokab Tech</span>
           <h2 className="mx-auto mt-4 max-w-3xl font-display text-[19px] font-extrabold leading-tight text-primary-foreground sm:text-4xl lg:text-5xl">
             Technical, commercial and operational services coordinated into one continuous process.
           </h2>
-          <div className="mt-8 grid grid-cols-2 gap-px border border-primary-foreground/15 bg-primary-foreground/15 sm:mt-12 lg:grid-cols-4">
+          <div className="mt-8 grid grid-cols-2 gap-px border border-primary-foreground/15 bg-primary-foreground/15 sm:mt-12 lg:grid-cols-5">
             {CERTS.map((c) => (
               <div
                 key={c.label}
@@ -52,29 +63,44 @@ function PortalContent({ certsTextOpacity, imageOpacity }: LayerProps) {
         </motion.div>
       </div>
 
-      {/* Enterprise visual layer */}
+      {/* Enterprise visual layer — Our Services */}
       <motion.div style={{ opacity: imageOpacity }} className="absolute inset-0 bg-primary">
         <img
           src={reveal}
           alt="Large-scale project delivery coordinated across systems and operations"
           className="h-full w-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-primary/45" />
-        <div className="absolute inset-x-0 bottom-12 px-6 text-center sm:bottom-16">
-          <p className="mx-auto max-w-2xl font-display text-lg font-extrabold leading-snug text-primary-foreground sm:text-3xl">
-            Complex initiatives turned into delivered projects, coordinated from Dubai.
-          </p>
+        <div className="absolute inset-0 bg-primary/75" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center overflow-y-auto px-4 py-10 text-center sm:px-8">
+          <span className="eyebrow text-accent">Our Services</span>
+          <h2 className="mx-auto mt-3 max-w-3xl font-display text-base font-extrabold leading-tight text-primary-foreground sm:text-2xl lg:text-3xl">
+            Comprehensive solutions delivered across every stage of the project lifecycle.
+          </h2>
+          <div className="mt-6 grid max-w-5xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {SERVICES.map((s) => (
+              <div
+                key={s.title}
+                className="flex flex-col items-start gap-2 border border-primary-foreground/15 bg-primary/60 px-5 py-5 text-left sm:px-6 sm:py-6"
+              >
+                <span className="font-display text-[11px] font-bold uppercase tracking-wider text-accent sm:text-xs">
+                  {s.title}
+                </span>
+                <span className="text-[11px] leading-relaxed text-primary-foreground/75 sm:text-[12.5px]">
+                  {s.copy}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </motion.div>
     </div>
   );
 }
 
-/** Partner With Us content — the final animation frame (page 8) lands on this. */
+/** Partner With Us content — the final animation frame lands on this. */
 function PartnerContent() {
   return (
     <div className="mx-auto flex max-w-4xl flex-col items-center gap-8 px-5 text-center sm:gap-10">
-      {/* Static, solid gold K with the blue ribbon */}
       <img
         src="/logo.png"
         alt="Alkokab Tech Solutions logo"
@@ -106,17 +132,16 @@ function PartnerContent() {
  * Scroll-driven gold "K" portal.
  * gold K on a white/gold tech field -> opens full-bleed (certifications ->
  * enterprise visual) -> single closing contraction -> the animation lands on
- * the "Partner With Us" page (page 8) with the K emblem, then hands off to the
- * footer.
+ * the "Partner With Us" page with the K emblem, then hands off to the footer.
  */
 export function MaskSequence() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
 
-  // Smooth scroll progression using a spring filter to eliminate scroll ticking stutters
+  // Smoother scroll progression — lower stiffness for gentler transitions
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 26,
+    stiffness: 60,
+    damping: 30,
     restDelta: 0.001,
   });
 
@@ -132,37 +157,36 @@ export function MaskSequence() {
     return undefined;
   }, []);
 
-  const scaleMax = isMobile ? 22 : 9;
+  const scaleMax = isMobile ? 20 : 8;
   const shiftMax = isMobile ? 10 : 22;
 
-  // Vector "K" clip scaled by transform — crisp at every size.
-  const kScale = useTransform(smoothProgress, [0.05, 0.32, 0.7, 0.92], [1, scaleMax, scaleMax, 1]);
+  // K zoom-in: slower and smoother entrance
+  const kScale = useTransform(smoothProgress, [0.05, 0.38, 0.68, 0.94], [1, scaleMax, scaleMax, 1]);
   const kInverse = useTransform(kScale, (v) => 1 / v);
-  // Glide the shape so its solid stem, not the open notch, sits over the frame.
-  const shift = useTransform(smoothProgress, [0.08, 0.3, 0.72, 0.9], [0, shiftMax, shiftMax, 0]);
-  // Outer translate is not affected by the sibling scale, so pre-multiply it.
+
+  // Shift the K shape
+  const shift = useTransform(smoothProgress, [0.08, 0.35, 0.7, 0.92], [0, shiftMax, shiftMax, 0]);
   const kShift = useTransform([shift, kScale], (vals) => {
     const [v = 0, s = 1] = vals as number[];
     return `${v * s}%`;
   });
   const kShiftBack = useTransform(shift, (v) => `${-v}%`);
 
-  // Gold K outline framing the portal while it is small.
-  const outlineOpacity = useTransform(smoothProgress, [0.1, 0.2, 0.88, 0.95], [1, 0, 0, 0]);
+  // Gold K outline — fades out more gradually
+  const outlineOpacity = useTransform(smoothProgress, [0.1, 0.25, 0.85, 0.93], [1, 0, 0, 0]);
 
-  // Once the K is wide, hand over to a full-bleed copy of the same content.
-  const fullOpacity = useTransform(smoothProgress, [0.26, 0.38, 0.7, 0.82], [0, 1, 1, 0]);
+  // Full-bleed content takeover — more gradual
+  const fullOpacity = useTransform(smoothProgress, [0.28, 0.42, 0.66, 0.8], [0, 1, 1, 0]);
 
-  // Copy fades in only when the portal is wide enough to read it.
-  const certsTextOpacity = useTransform(smoothProgress, [0.14, 0.3, 0.5, 0.58], [0, 1, 1, 0]);
-  // Enterprise tech visual.
-  const imageOpacity = useTransform(smoothProgress, [0.48, 0.58, 0.8, 0.9], [0, 1, 1, 0]);
+  // Why Alkokab Tech text — longer visible window, slower fade out
+  const certsTextOpacity = useTransform(smoothProgress, [0.14, 0.32, 0.52, 0.64], [0, 1, 1, 0]);
 
-  // White page the partner reveal lands on as the portal contracts.
-  const partnerBgOpacity = useTransform(smoothProgress, [0.76, 0.9], [0, 1]);
-  // Partner With Us content — the animation ends here, K emblem included.
-  const partnerOpacity = useTransform(smoothProgress, [0.84, 0.95], [0, 1]);
-  // Only let the layer catch clicks once the content is actually visible.
+  // Our Services visual — slower crossfade with certs text
+  const imageOpacity = useTransform(smoothProgress, [0.5, 0.64, 0.78, 0.88], [0, 1, 1, 0]);
+
+  // Partner reveal — much more gradual to avoid jarring zoom-out
+  const partnerBgOpacity = useTransform(smoothProgress, [0.8, 0.96], [0, 1]);
+  const partnerOpacity = useTransform(smoothProgress, [0.88, 0.98], [0, 1]);
   const partnerPointer = useTransform(partnerOpacity, (v) => (v >= 0.5 ? "auto" : "none"));
 
   const layers = { certsTextOpacity, imageOpacity };
@@ -243,7 +267,7 @@ export function MaskSequence() {
               className="pointer-events-none absolute inset-0 bg-background"
             />
 
-            {/* Partner With Us — the animation ends here (page 8) */}
+            {/* Partner With Us — the animation ends here */}
             <motion.div
               style={{ opacity: partnerOpacity, pointerEvents: partnerPointer }}
               className="absolute inset-0 flex items-center justify-center bg-background px-5"

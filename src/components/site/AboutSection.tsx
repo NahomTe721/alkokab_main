@@ -15,7 +15,6 @@ export function AboutSection() {
           transition={{ duration: 0.95, ease: EASE }}
           className="relative"
         >
-          <span className="absolute -left-4 -top-4 hidden h-24 w-24 border-l-[3px] border-t-[3px] border-accent lg:block" />
           <img
             src={team}
             alt="Multidisciplinary team coordinating end-to-end project delivery from Dubai"
@@ -25,8 +24,8 @@ export function AboutSection() {
             className="relative h-[380px] w-full object-cover shadow-lift lg:h-[520px]"
           />
           <div className="absolute -bottom-8 right-6 hidden bg-primary px-7 py-6 text-primary-foreground shadow-lift lg:block">
-            <p className="font-display text-4xl font-extrabold text-accent">18+</p>
-            <p className="eyebrow mt-1 text-primary-foreground/70">Years in the region</p>
+            <p className="font-display text-4xl font-extrabold text-accent">100%</p>
+            <p className="eyebrow mt-1 text-primary-foreground/70">Commitment to delivery</p>
           </div>
         </motion.div>
 
@@ -40,25 +39,13 @@ export function AboutSection() {
             Who We Are
           </span>
           <h2 className="gold-rule mt-6 font-display text-3xl font-extrabold leading-tight text-primary sm:text-[2.6rem]">
-            A multidisciplinary company built around execution.
+            Turning Complexity Into Delivered Solutions.
           </h2>
           <p className="mt-7 text-[15.5px] leading-relaxed text-muted-foreground">
-            We bring technical, commercial and operational services together under one roof —
-            spanning IT transformation, trade, supply chain finance, sourcing, logistics,
-            consulting, marketing and events — supporting clients across standalone service needs
-            and larger project engagements.
+            Alkokab Tech is a diversified business solutions provider delivering integrated technical, commercial, and operational services across multiple sectors. Our capabilities encompass technology solutions, sourcing and procurement, import and export, supply chain support, logistics, financing solutions, consulting, marketing, and project execution.
           </p>
           <p className="mt-4 text-[15.5px] leading-relaxed text-muted-foreground">
-            We have delivered projects that pair digital systems with hands-on, on-the-ground
-            implementation, particularly in public sector and institutional settings. A flagship
-            engagement saw us support the rollout of a biometrically integrated payroll management
-            system in South Sudan, delivered under the wider IFMIS expansion programme financed by
-            the World Bank — covering the deployment of biometric devices, large-scale civil servant
-            data collection, and training of personnel across the registration processes.
-          </p>
-          <p className="mt-4 text-[15.5px] leading-relaxed text-muted-foreground">
-            With headquarters in Dubai, our work spans GCC and African markets, with a strong
-            presence in East Africa and active engagement across multiple countries.
+            We support institutions, enterprises, and strategic partners by simplifying complex requirements, connecting the right expertise, and delivering solutions that generate measurable value.
           </p>
           <a
             href="#apart"

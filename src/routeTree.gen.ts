@@ -10,16 +10,66 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutCareersRouteImport } from './routes/about.careers'
+import { Route as AboutCompanyOverviewRouteImport } from './routes/about.company-overview'
+import { Route as AboutLogisticsRouteImport } from './routes/about.logistics'
+import { Route as AboutOurPresenceRouteImport } from './routes/about.our-presence'
+import { Route as AboutOverviewRouteImport } from './routes/about.overview'
+import { Route as AboutSourcingRouteImport } from './routes/about.sourcing'
+import { Route as AboutSupplyChainFinanceRouteImport } from './routes/about.supply-chain-finance'
+import { Route as AboutTechnologyTransformationRouteImport } from './routes/about.technology-transformation'
 import { Route as SolutionsItTransformationRouteImport } from './routes/solutions.it-transformation'
 import { Route as SolutionsLogisticsRouteImport } from './routes/solutions.logistics'
 import { Route as SolutionsSourcingRouteImport } from './routes/solutions.sourcing'
 import { Route as SolutionsSupplyChainFinanceRouteImport } from './routes/solutions.supply-chain-finance'
+import { Route as SolutionsTechnologyTransformationRouteImport } from './routes/solutions.technology-transformation'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutCareersRoute = AboutCareersRouteImport.update({
+  id: '/about/careers',
+  path: '/about/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutCompanyOverviewRoute = AboutCompanyOverviewRouteImport.update({
+  id: '/about/company-overview',
+  path: '/about/company-overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutLogisticsRoute = AboutLogisticsRouteImport.update({
+  id: '/about/logistics',
+  path: '/about/logistics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutOurPresenceRoute = AboutOurPresenceRouteImport.update({
+  id: '/about/our-presence',
+  path: '/about/our-presence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutOverviewRoute = AboutOverviewRouteImport.update({
+  id: '/about/overview',
+  path: '/about/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutSourcingRoute = AboutSourcingRouteImport.update({
+  id: '/about/sourcing',
+  path: '/about/sourcing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutSupplyChainFinanceRoute = AboutSupplyChainFinanceRouteImport.update({
+  id: '/about/supply-chain-finance',
+  path: '/about/supply-chain-finance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutTechnologyTransformationRoute =
+  AboutTechnologyTransformationRouteImport.update({
+    id: '/about/technology-transformation',
+    path: '/about/technology-transformation',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const SolutionsItTransformationRoute =
   SolutionsItTransformationRouteImport.update({
     id: '/solutions/it-transformation',
@@ -42,59 +92,128 @@ const SolutionsSupplyChainFinanceRoute =
     path: '/solutions/supply-chain-finance',
     getParentRoute: () => rootRouteImport,
   } as any)
+const SolutionsTechnologyTransformationRoute =
+  SolutionsTechnologyTransformationRouteImport.update({
+    id: '/solutions/technology-transformation',
+    path: '/solutions/technology-transformation',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about/careers': typeof AboutCareersRoute
+  '/about/company-overview': typeof AboutCompanyOverviewRoute
+  '/about/logistics': typeof AboutLogisticsRoute
+  '/about/our-presence': typeof AboutOurPresenceRoute
+  '/about/overview': typeof AboutOverviewRoute
+  '/about/sourcing': typeof AboutSourcingRoute
+  '/about/supply-chain-finance': typeof AboutSupplyChainFinanceRoute
+  '/about/technology-transformation': typeof AboutTechnologyTransformationRoute
   '/solutions/it-transformation': typeof SolutionsItTransformationRoute
   '/solutions/logistics': typeof SolutionsLogisticsRoute
   '/solutions/sourcing': typeof SolutionsSourcingRoute
   '/solutions/supply-chain-finance': typeof SolutionsSupplyChainFinanceRoute
+  '/solutions/technology-transformation': typeof SolutionsTechnologyTransformationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about/careers': typeof AboutCareersRoute
+  '/about/company-overview': typeof AboutCompanyOverviewRoute
+  '/about/logistics': typeof AboutLogisticsRoute
+  '/about/our-presence': typeof AboutOurPresenceRoute
+  '/about/overview': typeof AboutOverviewRoute
+  '/about/sourcing': typeof AboutSourcingRoute
+  '/about/supply-chain-finance': typeof AboutSupplyChainFinanceRoute
+  '/about/technology-transformation': typeof AboutTechnologyTransformationRoute
   '/solutions/it-transformation': typeof SolutionsItTransformationRoute
   '/solutions/logistics': typeof SolutionsLogisticsRoute
   '/solutions/sourcing': typeof SolutionsSourcingRoute
   '/solutions/supply-chain-finance': typeof SolutionsSupplyChainFinanceRoute
+  '/solutions/technology-transformation': typeof SolutionsTechnologyTransformationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about/careers': typeof AboutCareersRoute
+  '/about/company-overview': typeof AboutCompanyOverviewRoute
+  '/about/logistics': typeof AboutLogisticsRoute
+  '/about/our-presence': typeof AboutOurPresenceRoute
+  '/about/overview': typeof AboutOverviewRoute
+  '/about/sourcing': typeof AboutSourcingRoute
+  '/about/supply-chain-finance': typeof AboutSupplyChainFinanceRoute
+  '/about/technology-transformation': typeof AboutTechnologyTransformationRoute
   '/solutions/it-transformation': typeof SolutionsItTransformationRoute
   '/solutions/logistics': typeof SolutionsLogisticsRoute
   '/solutions/sourcing': typeof SolutionsSourcingRoute
   '/solutions/supply-chain-finance': typeof SolutionsSupplyChainFinanceRoute
+  '/solutions/technology-transformation': typeof SolutionsTechnologyTransformationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about/careers'
+    | '/about/company-overview'
+    | '/about/logistics'
+    | '/about/our-presence'
+    | '/about/overview'
+    | '/about/sourcing'
+    | '/about/supply-chain-finance'
+    | '/about/technology-transformation'
     | '/solutions/it-transformation'
     | '/solutions/logistics'
     | '/solutions/sourcing'
     | '/solutions/supply-chain-finance'
+    | '/solutions/technology-transformation'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about/careers'
+    | '/about/company-overview'
+    | '/about/logistics'
+    | '/about/our-presence'
+    | '/about/overview'
+    | '/about/sourcing'
+    | '/about/supply-chain-finance'
+    | '/about/technology-transformation'
     | '/solutions/it-transformation'
     | '/solutions/logistics'
     | '/solutions/sourcing'
     | '/solutions/supply-chain-finance'
+    | '/solutions/technology-transformation'
   id:
     | '__root__'
     | '/'
+    | '/about/careers'
+    | '/about/company-overview'
+    | '/about/logistics'
+    | '/about/our-presence'
+    | '/about/overview'
+    | '/about/sourcing'
+    | '/about/supply-chain-finance'
+    | '/about/technology-transformation'
     | '/solutions/it-transformation'
     | '/solutions/logistics'
     | '/solutions/sourcing'
     | '/solutions/supply-chain-finance'
+    | '/solutions/technology-transformation'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutCareersRoute: typeof AboutCareersRoute
+  AboutCompanyOverviewRoute: typeof AboutCompanyOverviewRoute
+  AboutLogisticsRoute: typeof AboutLogisticsRoute
+  AboutOurPresenceRoute: typeof AboutOurPresenceRoute
+  AboutOverviewRoute: typeof AboutOverviewRoute
+  AboutSourcingRoute: typeof AboutSourcingRoute
+  AboutSupplyChainFinanceRoute: typeof AboutSupplyChainFinanceRoute
+  AboutTechnologyTransformationRoute: typeof AboutTechnologyTransformationRoute
   SolutionsItTransformationRoute: typeof SolutionsItTransformationRoute
   SolutionsLogisticsRoute: typeof SolutionsLogisticsRoute
   SolutionsSourcingRoute: typeof SolutionsSourcingRoute
   SolutionsSupplyChainFinanceRoute: typeof SolutionsSupplyChainFinanceRoute
+  SolutionsTechnologyTransformationRoute: typeof SolutionsTechnologyTransformationRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -104,6 +223,62 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/careers': {
+      id: '/about/careers'
+      path: '/about/careers'
+      fullPath: '/about/careers'
+      preLoaderRoute: typeof AboutCareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/company-overview': {
+      id: '/about/company-overview'
+      path: '/about/company-overview'
+      fullPath: '/about/company-overview'
+      preLoaderRoute: typeof AboutCompanyOverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/logistics': {
+      id: '/about/logistics'
+      path: '/about/logistics'
+      fullPath: '/about/logistics'
+      preLoaderRoute: typeof AboutLogisticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/our-presence': {
+      id: '/about/our-presence'
+      path: '/about/our-presence'
+      fullPath: '/about/our-presence'
+      preLoaderRoute: typeof AboutOurPresenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/overview': {
+      id: '/about/overview'
+      path: '/about/overview'
+      fullPath: '/about/overview'
+      preLoaderRoute: typeof AboutOverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/sourcing': {
+      id: '/about/sourcing'
+      path: '/about/sourcing'
+      fullPath: '/about/sourcing'
+      preLoaderRoute: typeof AboutSourcingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/supply-chain-finance': {
+      id: '/about/supply-chain-finance'
+      path: '/about/supply-chain-finance'
+      fullPath: '/about/supply-chain-finance'
+      preLoaderRoute: typeof AboutSupplyChainFinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/technology-transformation': {
+      id: '/about/technology-transformation'
+      path: '/about/technology-transformation'
+      fullPath: '/about/technology-transformation'
+      preLoaderRoute: typeof AboutTechnologyTransformationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/solutions/it-transformation': {
@@ -134,15 +309,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolutionsSupplyChainFinanceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/solutions/technology-transformation': {
+      id: '/solutions/technology-transformation'
+      path: '/solutions/technology-transformation'
+      fullPath: '/solutions/technology-transformation'
+      preLoaderRoute: typeof SolutionsTechnologyTransformationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutCareersRoute: AboutCareersRoute,
+  AboutCompanyOverviewRoute: AboutCompanyOverviewRoute,
+  AboutLogisticsRoute: AboutLogisticsRoute,
+  AboutOurPresenceRoute: AboutOurPresenceRoute,
+  AboutOverviewRoute: AboutOverviewRoute,
+  AboutSourcingRoute: AboutSourcingRoute,
+  AboutSupplyChainFinanceRoute: AboutSupplyChainFinanceRoute,
+  AboutTechnologyTransformationRoute: AboutTechnologyTransformationRoute,
   SolutionsItTransformationRoute: SolutionsItTransformationRoute,
   SolutionsLogisticsRoute: SolutionsLogisticsRoute,
   SolutionsSourcingRoute: SolutionsSourcingRoute,
   SolutionsSupplyChainFinanceRoute: SolutionsSupplyChainFinanceRoute,
+  SolutionsTechnologyTransformationRoute:
+    SolutionsTechnologyTransformationRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

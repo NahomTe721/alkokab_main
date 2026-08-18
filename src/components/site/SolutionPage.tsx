@@ -10,13 +10,20 @@ import hero4 from "@/assets/hero-4.webp";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-type SolutionId = "it-transformation" | "logistics" | "sourcing" | "supply-chain-finance";
+type SolutionId = "technology-transformation" | "logistics" | "sourcing" | "supply-chain-finance";
 
 type SolutionRoute =
-  | "/solutions/it-transformation"
+  | "/solutions/technology-transformation"
   | "/solutions/logistics"
   | "/solutions/sourcing"
   | "/solutions/supply-chain-finance";
+
+type Section = {
+  heading: string;
+  intro?: string;
+  points?: string[];
+  steps?: string[];
+};
 
 type Solution = {
   id: SolutionId;
@@ -25,80 +32,119 @@ type Solution = {
   kicker: string;
   description: string;
   image: string;
-  points: string[];
+  sections: Section[];
 };
 
 const SOLUTIONS: Solution[] = [
   {
-    id: "it-transformation",
-    path: "/solutions/it-transformation",
-    title: "IT Transformation",
-    kicker: "Systems & Infrastructure",
+    id: "technology-transformation",
+    path: "/solutions/technology-transformation",
+    title: "Technology Transformation",
+    kicker: "Modernizing Operations Through Technology",
     description:
-      "Supporting the design, implementation and improvement of systems and infrastructure that strengthen operations and enable long-term efficiency.",
+      "We support organizations in adopting new technologies, upgrading systems, and improving digital processes. Our approach covers the full transformation journey—from assessment and opportunity identification to implementation and long-term optimization.",
     image: hero1,
-    points: [
-      "Approached as one connected system, so systems and operations move together from the start.",
-      "The right mix of technical, commercial and operational support matched to each project's real requirements.",
-      "Managed end to end — from planning and implementation through to training and follow-through.",
+    sections: [
+      {
+        heading: "Key Areas of Support",
+        points: [
+          "Digital Transformation",
+          "System Modernization",
+          "Process Automation",
+          "Technology Integration",
+          "Data & Digital Solutions",
+          "Technology Infrastructure",
+        ],
+      },
     ],
   },
   {
     id: "logistics",
     path: "/solutions/logistics",
     title: "Logistics",
-    kicker: "Movement & Delivery",
+    kicker: "Efficient Movement Across Borders & Markets",
     description:
-      "Coordinating the movement, storage and delivery of goods across local and international supply chains.",
+      "Alkokab Tech simplifies complex supply chain requirements across the GCC, Africa, and international markets. We coordinate transportation partners, customs support, storage facilities, and delivery services to ensure dependable movement of goods.",
     image: hero2,
-    points: [
-      "Every stage handled as part of one continuous process, from planning and sourcing to execution.",
-      "Coordinated capability brought together based on the real requirements of each route and market.",
-      "Strong experience in cross-market, multi-country delivery across GCC and African markets.",
+    sections: [
+      {
+        heading: "Capabilities",
+        points: [
+          "International Shipping",
+          "Import & Export Support",
+          "Distribution & Delivery",
+          "Cargo Monitoring",
+        ],
+      },
+      {
+        heading: "Shipment Process",
+        steps: [
+          "Shipment Planning",
+          "Shipping & Border Processing",
+          "Final Delivery",
+        ],
+      },
     ],
   },
   {
     id: "sourcing",
     path: "/solutions/sourcing",
     title: "Sourcing",
-    kicker: "Supply & Procurement",
+    kicker: "Connecting You to Dependable Supply Sources",
     description:
-      "Identifying, securing and coordinating suppliers, materials and products aligned with operational and project needs.",
+      "We help businesses secure the products, equipment, and materials they require through trusted supply channels.",
     image: hero3,
-    points: [
-      "Suppliers, materials and products aligned to each project's real requirements.",
-      "Sourcing treated as part of a connected system, from selection through to delivery.",
-      "International partnerships supporting coordinated, multi-country supply and execution.",
+    sections: [
+      {
+        heading: "Capabilities",
+        points: [
+          "Supplier Research",
+          "Supplier Verification",
+          "Product & Material Procurement",
+          "Price & Terms Negotiation",
+          "Product Quality & Compliance",
+          "Market & Cost Analysis",
+        ],
+      },
+      {
+        heading: "Process",
+        steps: [
+          "Requirement Assessment",
+          "Market & Supplier Search",
+          "Evaluation & Commercial Discussion",
+          "Verification & Procurement",
+        ],
+      },
     ],
   },
   {
     id: "supply-chain-finance",
     path: "/solutions/supply-chain-finance",
     title: "Supply Chain Finance",
-    kicker: "Finance & Cash Flow",
+    kicker: "Financing That Sustains Supply Chain Continuity",
     description:
-      "Supporting cash flow, procurement and delivery through structured financing solutions aligned with supply chain operations.",
+      "We provide financial solutions that support procurement, supplier payments, and operational stability.",
     image: hero4,
-    points: [
-      "Structured financing solutions that keep sourcing, procurement and delivery moving.",
-      "Commercial and financial support aligned with the real requirements of each engagement.",
-      "One continuous process from planning and sourcing through to execution and follow-through.",
+    sections: [
+      {
+        heading: "Solutions",
+        points: [
+          "Working Capital Support",
+          "Invoice Financing",
+          "Supplier Funding",
+          "Structured Payment Solutions",
+        ],
+      },
+      {
+        heading: "Operational Models",
+        points: [
+          "Invoice Financing",
+          "Early Payment Programs",
+          "Supplier Capital Support",
+          "Supply Chain Funding",
+        ],
+      },
     ],
-  },
-];
-
-const DELIVERY_NODES = [
-  {
-    title: "Integrated Project Approach",
-    copy: "Each project is treated as one connected system, not isolated tasks, so every moving part works together from the start.",
-  },
-  {
-    title: "Coordinated Capability Alignment",
-    copy: "We bring together the right mix of technical, commercial and operational support based on the project's real requirements.",
-  },
-  {
-    title: "Cross-Market Execution",
-    copy: "Through our international partnerships, we support projects across GCC and African markets with proven multi-country delivery.",
   },
 ];
 
@@ -125,8 +171,7 @@ function SolutionHero({ solution }: { solution: Solution }) {
           transition={{ duration: 0.8, ease: EASE, delay: 0.15 }}
           className="max-w-3xl"
         >
-          <span className="eyebrow inline-flex items-center gap-2 text-accent">
-            <span className="h-[2px] w-8 bg-gold" />
+          <span className="eyebrow text-accent">
             {solution.kicker}
           </span>
           <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.02] text-primary-foreground sm:text-6xl lg:text-[4.2rem]">
@@ -164,49 +209,55 @@ function DeliverySection({ solution }: { solution: Solution }) {
     <section className="bg-background py-20 lg:py-28">
       <div className="mx-auto grid max-w-[1400px] gap-14 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20 lg:px-10">
         <div>
-          <span className="eyebrow inline-flex items-center gap-2 text-accent-deep">
-            <span className="h-[2px] w-8 bg-gold" />
+          <span className="eyebrow text-accent-deep">
             What's Included
           </span>
           <h2 className="gold-rule mt-5 font-display text-3xl font-extrabold leading-tight text-primary sm:text-[2.4rem]">
             Delivered as part of one connected process.
           </h2>
           <p className="mt-6 text-[15.5px] leading-relaxed text-muted-foreground">
-            {solution.description} Our approach brings the right capability together and manages
-            every stage as one continuous process — from planning and sourcing to execution and
-            follow-through.
+            {solution.description}
           </p>
-          <ul className="mt-8 space-y-4">
-            {solution.points.map((point) => (
-              <li
-                key={point}
-                className="flex gap-3 text-[14.5px] leading-relaxed text-muted-foreground"
-              >
-                <CheckCircle2
-                  className="mt-0.5 h-5 w-5 shrink-0 text-accent-deep"
-                  strokeWidth={1.7}
-                />
-                <span>{point}</span>
-              </li>
-            ))}
-          </ul>
         </div>
 
-        <div className="grid gap-px border border-border bg-border sm:grid-cols-1">
-          {DELIVERY_NODES.map((node, i) => (
+        <div className="space-y-8">
+          {solution.sections.map((section) => (
             <motion.div
-              key={node.title}
+              key={section.heading}
               initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, ease: EASE, delay: i * 0.08 }}
+              transition={{ duration: 0.6, ease: EASE }}
               className="bg-card p-8 transition-colors duration-500 hover:bg-accent-soft"
             >
-              <span className="eyebrow text-accent-deep">0{i + 1}</span>
-              <h3 className="mt-3 font-display text-lg font-bold text-primary">{node.title}</h3>
-              <p className="mt-2 text-[13.5px] leading-relaxed text-muted-foreground">
-                {node.copy}
-              </p>
+              <h3 className="font-display text-lg font-bold text-primary">{section.heading}</h3>
+              {section.intro && (
+                <p className="mt-3 text-[14.5px] leading-relaxed text-muted-foreground">
+                  {section.intro}
+                </p>
+              )}
+              {section.points && (
+                <ul className="mt-4 space-y-2.5">
+                  {section.points.map((item) => (
+                    <li key={item} className="flex gap-3 text-[14px] leading-relaxed text-muted-foreground">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent-deep" strokeWidth={1.7} />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {section.steps && (
+                <ol className="mt-4 space-y-3">
+                  {section.steps.map((item, i) => (
+                    <li key={item} className="flex gap-3 text-[14px] leading-relaxed text-muted-foreground">
+                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center bg-accent-soft text-[11px] font-bold text-accent-deep">
+                        {i + 1}
+                      </span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ol>
+              )}
             </motion.div>
           ))}
         </div>
