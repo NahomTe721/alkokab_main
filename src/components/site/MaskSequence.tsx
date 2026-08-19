@@ -28,23 +28,39 @@ const SERVICES = [
 ];
 
 type LayerProps = {
-  certsTextOpacity: MotionValue<number>;
+  headingOpacity: MotionValue<number>;
+  boxesOpacity: MotionValue<number>;
   imageOpacity: MotionValue<number>;
 };
 
 /** The content revealed inside — and eventually beyond — the "K" portal. */
-function PortalContent({ certsTextOpacity, imageOpacity }: LayerProps) {
+function PortalContent({ headingOpacity, boxesOpacity, imageOpacity }: LayerProps) {
   return (
     <div className="absolute inset-0">
       {/* Certifications layer — Why Alkokab Tech */}
       <div className="absolute inset-0 flex flex-col items-center justify-center bg-primary px-4 text-center sm:px-5">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,oklch(0.31_0.05_250)_0%,transparent_70%)]" />
-        <motion.div style={{ opacity: certsTextOpacity }} className="relative w-full max-w-5xl">
+        <img
+          src={techBg}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/60 to-primary/90" />
+        <motion.div style={{ opacity: headingOpacity }} className="relative w-full max-w-5xl">
           <span className="eyebrow text-accent">Why Alkokab Tech</span>
-          <h2 className="mx-auto mt-4 max-w-3xl font-display text-[19px] font-extrabold leading-tight text-primary-foreground sm:text-4xl lg:text-5xl">
-            Technical, commercial and operational services coordinated into one continuous process.
+          <h2 className="mx-auto mt-4 max-w-3xl font-display text-[19px] font-extrabold leading-tight text-primary-foreground sm:text-3xl lg:text-[2.6rem]">
+            <span className="bg-gold bg-clip-text text-transparent">Technical</span>
+            <span className="text-primary-foreground">,</span>{" "}
+            <span className="bg-gold bg-clip-text text-transparent">commercial</span>{" "}
+            <span className="text-primary-foreground">and</span>{" "}
+            <span className="bg-gold bg-clip-text text-transparent">operational</span>{" "}
+            <span className="text-primary-foreground">services coordinated into one continuous process.</span>
           </h2>
-          <div className="mt-8 grid grid-cols-2 gap-px border border-primary-foreground/15 bg-primary-foreground/15 sm:mt-12 lg:grid-cols-5">
+          <div className="mx-auto mt-5 h-[3px] w-24 bg-gold" />
+          <motion.div
+            style={{ opacity: boxesOpacity }}
+            className="mt-8 grid grid-cols-2 gap-px border border-primary-foreground/15 bg-primary-foreground/15 sm:mt-12 lg:grid-cols-5"
+          >
             {CERTS.map((c) => (
               <div
                 key={c.label}
@@ -59,7 +75,7 @@ function PortalContent({ certsTextOpacity, imageOpacity }: LayerProps) {
                 </span>
               </div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 
@@ -140,8 +156,8 @@ export function MaskSequence() {
 
   // Smoother scroll progression — lower stiffness for gentler transitions
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 60,
-    damping: 30,
+    stiffness: 50,
+    damping: 32,
     restDelta: 0.001,
   });
 
@@ -157,44 +173,41 @@ export function MaskSequence() {
     return undefined;
   }, []);
 
-  const scaleMax = isMobile ? 20 : 8;
-  const shiftMax = isMobile ? 10 : 22;
+  const scaleMax = isMobile ? 18 : 7;
 
-  // K zoom-in: slower and smoother entrance
-  const kScale = useTransform(smoothProgress, [0.05, 0.38, 0.68, 0.94], [1, scaleMax, scaleMax, 1]);
+  // K zoom-in: starts earlier, completes sooner so the next page appears faster
+  const kScale = useTransform(smoothProgress, [0.02, 0.25, 0.7, 0.97], [1, scaleMax, scaleMax, 1]);
   const kInverse = useTransform(kScale, (v) => 1 / v);
 
-  // Shift the K shape
-  const shift = useTransform(smoothProgress, [0.08, 0.35, 0.7, 0.92], [0, shiftMax, shiftMax, 0]);
-  const kShift = useTransform([shift, kScale], (vals) => {
-    const [v = 0, s = 1] = vals as number[];
-    return `${v * s}%`;
-  });
-  const kShiftBack = useTransform(shift, (v) => `${-v}%`);
-
   // Gold K outline — fades out more gradually
-  const outlineOpacity = useTransform(smoothProgress, [0.1, 0.25, 0.85, 0.93], [1, 0, 0, 0]);
+  const outlineOpacity = useTransform(smoothProgress, [0.1, 0.25, 0.88, 0.95], [1, 0, 0, 0]);
 
-  // Full-bleed content takeover — more gradual
-  const fullOpacity = useTransform(smoothProgress, [0.28, 0.42, 0.66, 0.8], [0, 1, 1, 0]);
+  // Full-bleed content takeover — starts right after K finishes opening
+  const fullOpacity = useTransform(smoothProgress, [0.2, 0.35, 0.68, 0.8], [0, 1, 1, 0]);
 
-  // Why Alkokab Tech text — longer visible window, slower fade out
-  const certsTextOpacity = useTransform(smoothProgress, [0.14, 0.32, 0.52, 0.64], [0, 1, 1, 0]);
+  // Heading fades in after K starts zooming — not visible from the start
+  const headingOpacity = useTransform(smoothProgress, [0.08, 0.2, 0.5, 0.6], [0, 1, 1, 0]);
 
-  // Our Services visual — slower crossfade with certs text
-  const imageOpacity = useTransform(smoothProgress, [0.5, 0.64, 0.78, 0.88], [0, 1, 1, 0]);
+  // Why Alkokab Tech — heading always visible, boxes pop in AFTER K fully opens
+  const boxesOpacity = useTransform(smoothProgress, [0.28, 0.38, 0.52, 0.62], [0, 1, 1, 0]);
 
-  // Partner reveal — much more gradual to avoid jarring zoom-out
-  const partnerBgOpacity = useTransform(smoothProgress, [0.8, 0.96], [0, 1]);
-  const partnerOpacity = useTransform(smoothProgress, [0.88, 0.98], [0, 1]);
+  // Our Services visual — stays visible much longer so client can read, then slow fade
+  const imageOpacity = useTransform(smoothProgress, [0.55, 0.68, 0.82, 0.92], [0, 1, 1, 0]);
+
+  // Partner reveal — comes in earlier, stays visible much longer before footer
+  const partnerBgOpacity = useTransform(smoothProgress, [0.78, 0.88], [0, 1]);
+  const partnerOpacity = useTransform(smoothProgress, [0.82, 0.9], [0, 1]);
   const partnerPointer = useTransform(partnerOpacity, (v) => (v >= 0.5 ? "auto" : "none"));
 
-  const layers = { certsTextOpacity, imageOpacity };
+  // White overlay fades out as you scroll — more transparent during K transition
+  const whiteOverlayOpacity = useTransform(smoothProgress, [0, 0.25], [0.35, 0]);
+
+  const layers = { headingOpacity, boxesOpacity, imageOpacity };
 
   return (
     <>
       <section id="apart" ref={ref} className="relative bg-background">
-        <div className="h-[400vh]">
+        <div className="h-[800vh]">
           <div className="sticky top-0 h-screen overflow-hidden bg-background">
             {/* White + gold tech field behind the K */}
             <img
@@ -205,7 +218,7 @@ export function MaskSequence() {
               height={1200}
               className="absolute inset-0 h-full w-full object-cover"
             />
-            <div className="absolute inset-0 bg-background/35" />
+            <motion.div style={{ opacity: whiteOverlayOpacity }} className="absolute inset-0 bg-background" />
 
             {/* Vector K clip path */}
             <svg aria-hidden="true" className="absolute h-0 w-0">
@@ -226,13 +239,12 @@ export function MaskSequence() {
               <motion.div
                 style={{
                   scale: kScale,
-                  x: kShift,
                   clipPath: "url(#k-portal)",
                   WebkitClipPath: "url(#k-portal)",
                 }}
-                className="h-[15vmax] w-[15vmax]"
+                className="h-[20vmax] w-[20vmax]"
               >
-                <motion.div style={{ x: kShiftBack }} className="h-full w-full">
+                <div className="h-full w-full">
                   <motion.div
                     style={{ scale: kInverse }}
                     className="flex h-full w-full items-center justify-center"
@@ -241,7 +253,7 @@ export function MaskSequence() {
                       <PortalContent {...layers} />
                     </div>
                   </motion.div>
-                </motion.div>
+                </div>
               </motion.div>
             </div>
 
@@ -249,8 +261,8 @@ export function MaskSequence() {
             <motion.svg
               viewBox="0 0 100 100"
               aria-hidden="true"
-              style={{ opacity: outlineOpacity, scale: kScale, x: kShift }}
-              className="pointer-events-none absolute left-1/2 top-1/2 -ml-[7.5vmax] -mt-[7.5vmax] h-[15vmax] w-[15vmax]"
+              style={{ opacity: outlineOpacity, scale: kScale }}
+              className="pointer-events-none absolute left-1/2 top-1/2 -ml-[10vmax] -mt-[10vmax] h-[20vmax] w-[20vmax]"
             >
               <path
                 d={K_PATH}

@@ -208,70 +208,62 @@ const PAGES: AboutPage[] = [
     id: "company-overview",
     path: "/about/company-overview",
     title: "Overview",
-    kicker: "Company Overview",
+    kicker: "A Business Built to Connect Expertise, Resources, and Execution",
     description:
-      "Alkokab Tech Solutions is a Dubai-headquartered business solutions provider delivering integrated services across technology, trade, finance, and operations.",
+      "Based in Dubai and connected to markets across Africa, Alkokab brings together technology, sourcing, trade, logistics, finance, and operational capabilities to support organizations with complex business and project requirements.",
     image: hero2,
     sections: [
       {
-        heading: "Who We Are",
+        heading: "Our Experience",
         intro:
-          "We combine technical, commercial, and operational capabilities to support organizations with complex business and project requirements. Our multidisciplinary approach ensures every engagement is managed with clarity, precision, and accountability.",
-      },
-      {
-        heading: "What We Do",
-        points: {
-          label: "",
-          items: [
-            "Technology solutions and digital transformation",
-            "Sourcing and procurement",
-            "Import and export activities",
-            "Supply chain support and logistics",
-            "Financing solutions",
-            "Consulting and business support",
-            "Marketing and communication",
-          ],
-        },
-      },
-      {
-        heading: "Our Mission",
-        intro:
-          "To simplify complex requirements, connect the right expertise, and deliver solutions that generate measurable value for our clients and partners.",
+          "We support sourcing and procurement, supplier coordination, technology requirements, import and export activities, logistics, and project execution. Through our network of local and international partners, we facilitate the acquisition, movement, implementation, and delivery of products and services across multiple markets.",
       },
     ],
   },
   {
     id: "our-presence",
     path: "/about/our-presence",
-    title: "Our Presence",
-    kicker: "Operating Across Regions",
+    title: "Our Experience",
+    kicker: "What We Do",
     description:
-      "Headquartered in Dubai with strong access across African markets, Alkokab Tech connects clients with suppliers, partners, and opportunities across regional and global ecosystems.",
+      "We support sourcing and procurement, supplier coordination, technology requirements, import and export activities, logistics, and project execution. Through our network of local and international partners, we facilitate the acquisition, movement, implementation, and delivery of products and services across multiple markets.",
     image: hero3,
     sections: [
       {
-        heading: "Dubai — Business & Coordination Hub",
-        intro:
-          "Managing international relationships, sourcing activities, partnerships, and regional operations from our headquarters in Dubai Internet City.",
-      },
-      {
-        heading: "Africa — Market Access & Project Support",
-        intro:
-          "Connecting international resources with opportunities across African markets through reliable sourcing, logistics, technology, and operational coordination.",
+        heading: "Sourcing & Procurement",
         points: {
           label: "",
           items: [
-            "East Africa — strong presence and active engagement",
-            "West Africa — growing market participation",
-            "Central Africa — project-based delivery",
-            "North Africa — trade and sourcing connections",
+            "Supplier identification and evaluation",
+            "Product and material procurement",
+            "Price and terms negotiation",
+            "Quality and compliance assurance",
           ],
         },
       },
       {
-        heading: "Global Reach",
-        intro:
-          "Through international partnerships and a coordinated delivery network, we support multi-country projects that span GCC, African, and global markets.",
+        heading: "Technology & Implementation",
+        points: {
+          label: "",
+          items: [
+            "System design and deployment",
+            "Digital transformation support",
+            "Technology integration across operations",
+            "Training and follow-through",
+          ],
+        },
+      },
+      {
+        heading: "Logistics & Execution",
+        points: {
+          label: "",
+          items: [
+            "Import and export coordination",
+            "Transportation and delivery management",
+            "Project execution and oversight",
+            "Post-delivery support",
+          ],
+        },
       },
     ],
   },
@@ -322,8 +314,7 @@ const PAGES: AboutPage[] = [
 const OTHER_ABOUTS = [
   { id: "overview" as AboutId, path: "/about/overview" as AboutRoute, kicker: "Company Overview", title: "About Alkokab Tech" },
   { id: "company-overview" as AboutId, path: "/about/company-overview" as AboutRoute, kicker: "Overview", title: "Overview" },
-  { id: "our-presence" as AboutId, path: "/about/our-presence" as AboutRoute, kicker: "Regions", title: "Our Presence" },
-  { id: "careers" as AboutId, path: "/about/careers" as AboutRoute, kicker: "Careers", title: "Careers" },
+  { id: "our-presence" as AboutId, path: "/about/our-presence" as AboutRoute, kicker: "Our Experience", title: "Our Experience" },
 ];
 
 function AboutHero({ page }: { page: AboutPage }) {
@@ -470,7 +461,7 @@ function OtherAbouts({ current }: { current: AboutPage }) {
           </h2>
         </div>
 
-        <div className="mt-12 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
           {others.map((a, i) => (
             <motion.div
               key={a.id}

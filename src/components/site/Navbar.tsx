@@ -11,7 +11,7 @@ type NavItem = { label: string; to?: string; items: string[] };
 const NAV: NavItem[] = [
   {
     label: "About Us",
-    items: ["About Alkokab Tech", "Overview", "Our Presence", "Careers"],
+    items: ["About Alkokab Tech", "Overview", "Our Experience"],
   },
   {
     label: "Solutions",
@@ -23,7 +23,7 @@ const NAV: NavItem[] = [
   },
   {
     label: "Contact Us",
-    items: ["Dubai Headquarters", "Sales Enquiry", "Partner Desk", "Support"],
+    items: ["Dubai Headquarters", "Support"],
   },
 ];
 
@@ -49,8 +49,7 @@ const LINK_MAP: Record<string, string> = {
 const ABOUT_LINK_MAP: Record<string, string> = {
   "About Alkokab Tech": "/about/overview",
   Overview: "/about/company-overview",
-  "Our Presence": "/about/our-presence",
-  Careers: "/about/careers",
+  "Our Experience": "/about/our-presence",
 };
 
 const SOLUTION_ROUTES = new Set([
