@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutCareersRouteImport } from './routes/about.careers'
-import { Route as AboutCompanyOverviewRouteImport } from './routes/about.company-overview'
 import { Route as AboutLogisticsRouteImport } from './routes/about.logistics'
 import { Route as AboutOurPresenceRouteImport } from './routes/about.our-presence'
 import { Route as AboutOverviewRouteImport } from './routes/about.overview'
@@ -32,11 +31,6 @@ const IndexRoute = IndexRouteImport.update({
 const AboutCareersRoute = AboutCareersRouteImport.update({
   id: '/about/careers',
   path: '/about/careers',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutCompanyOverviewRoute = AboutCompanyOverviewRouteImport.update({
-  id: '/about/company-overview',
-  path: '/about/company-overview',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutLogisticsRoute = AboutLogisticsRouteImport.update({
@@ -102,7 +96,6 @@ const SolutionsTechnologyTransformationRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about/careers': typeof AboutCareersRoute
-  '/about/company-overview': typeof AboutCompanyOverviewRoute
   '/about/logistics': typeof AboutLogisticsRoute
   '/about/our-presence': typeof AboutOurPresenceRoute
   '/about/overview': typeof AboutOverviewRoute
@@ -118,7 +111,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about/careers': typeof AboutCareersRoute
-  '/about/company-overview': typeof AboutCompanyOverviewRoute
   '/about/logistics': typeof AboutLogisticsRoute
   '/about/our-presence': typeof AboutOurPresenceRoute
   '/about/overview': typeof AboutOverviewRoute
@@ -135,7 +127,6 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about/careers': typeof AboutCareersRoute
-  '/about/company-overview': typeof AboutCompanyOverviewRoute
   '/about/logistics': typeof AboutLogisticsRoute
   '/about/our-presence': typeof AboutOurPresenceRoute
   '/about/overview': typeof AboutOverviewRoute
@@ -153,7 +144,6 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about/careers'
-    | '/about/company-overview'
     | '/about/logistics'
     | '/about/our-presence'
     | '/about/overview'
@@ -169,7 +159,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about/careers'
-    | '/about/company-overview'
     | '/about/logistics'
     | '/about/our-presence'
     | '/about/overview'
@@ -185,7 +174,6 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about/careers'
-    | '/about/company-overview'
     | '/about/logistics'
     | '/about/our-presence'
     | '/about/overview'
@@ -202,7 +190,6 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutCareersRoute: typeof AboutCareersRoute
-  AboutCompanyOverviewRoute: typeof AboutCompanyOverviewRoute
   AboutLogisticsRoute: typeof AboutLogisticsRoute
   AboutOurPresenceRoute: typeof AboutOurPresenceRoute
   AboutOverviewRoute: typeof AboutOverviewRoute
@@ -230,13 +217,6 @@ declare module '@tanstack/react-router' {
       path: '/about/careers'
       fullPath: '/about/careers'
       preLoaderRoute: typeof AboutCareersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about/company-overview': {
-      id: '/about/company-overview'
-      path: '/about/company-overview'
-      fullPath: '/about/company-overview'
-      preLoaderRoute: typeof AboutCompanyOverviewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about/logistics': {
@@ -322,7 +302,6 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutCareersRoute: AboutCareersRoute,
-  AboutCompanyOverviewRoute: AboutCompanyOverviewRoute,
   AboutLogisticsRoute: AboutLogisticsRoute,
   AboutOurPresenceRoute: AboutOurPresenceRoute,
   AboutOverviewRoute: AboutOverviewRoute,

@@ -6,12 +6,13 @@ const mark = "/logo.png";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-type NavItem = { label: string; to?: string; items: string[] };
+type NavItem = { label: string; to?: string; items: string[]; comingSoon?: boolean };
 
 const NAV: NavItem[] = [
+  { label: "Home", to: "/", items: [] },
   {
     label: "About Us",
-    items: ["About Alkokab Tech", "Overview", "Our Experience"],
+    items: ["About Alkokab Tech", "Our Experience"],
   },
   {
     label: "Solutions",
@@ -19,7 +20,8 @@ const NAV: NavItem[] = [
   },
   {
     label: "Brands",
-    items: ["Global Vendors", "Distribution Portfolio", "Become a Partner"],
+    items: [],
+    comingSoon: true,
   },
   {
     label: "Contact Us",
@@ -48,7 +50,6 @@ const LINK_MAP: Record<string, string> = {
 
 const ABOUT_LINK_MAP: Record<string, string> = {
   "About Alkokab Tech": "/about/overview",
-  Overview: "/about/company-overview",
   "Our Experience": "/about/our-presence",
 };
 
@@ -204,6 +205,11 @@ export function Navbar() {
                   }`}
                 >
                   {item.label}
+                  {item.comingSoon && (
+                    <span className="ml-1 inline-flex items-center rounded-full bg-accent-deep/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-accent-deep animate-pulse">
+                      Soon
+                    </span>
+                  )}
                   <ChevronDown
                     className={`h-3.5 w-3.5 transition-transform duration-300 ${
                       open === item.label ? "rotate-180" : ""
@@ -220,11 +226,20 @@ export function Navbar() {
                       className="absolute left-0 top-full w-64 origin-top overflow-hidden rounded-sm border border-border bg-card shadow-lift"
                     >
                       <span className="block h-[3px] w-full bg-gold" />
-                      <ul className="p-2">
-                        {item.items.map((sub) => (
-                          <li key={sub}>{renderSubItem(sub, false, item.label)}</li>
-                        ))}
-                      </ul>
+                      {item.comingSoon && item.items.length === 0 ? (
+                        <div className="p-6 text-center">
+                          <p className="text-sm font-bold text-primary">Coming Soon</p>
+                          <p className="mt-1 text-[12px] text-muted-foreground">We are working on something exciting.</p>
+                        </div>
+                      ) : (
+                        <ul className="p-2">
+                          {item.items.map((sub) => (
+                            <li key={sub} className="flex items-center justify-between">
+                              {renderSubItem(sub, false, item.label)}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -274,12 +289,23 @@ export function Navbar() {
                     </Link>
                   ) : (
                     <>
-                      <p className="font-display text-sm font-bold text-primary">{item.label}</p>
+                      <p className="font-display text-sm font-bold text-primary">
+                        {item.label}
+                        {item.comingSoon && (
+                          <span className="ml-2 inline-flex items-center rounded-full bg-accent-deep/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-accent-deep">
+                            Soon
+                          </span>
+                        )}
+                      </p>
+                      {item.comingSoon && item.items.length === 0 ? (
+                        <p className="mt-2 text-[12px] text-muted-foreground">Coming Soon</p>
+                      ) : (
                       <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1.5">
                         {item.items.map((sub) => (
                           <span key={sub}>{renderSubItem(sub, true, item.label)}</span>
                         ))}
                       </div>
+                      )}
                     </>
                   )}
                 </li>

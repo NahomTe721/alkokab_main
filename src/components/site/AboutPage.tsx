@@ -13,7 +13,6 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 type AboutId =
   | "overview"
-  | "company-overview"
   | "our-presence"
   | "careers"
   | "technology-transformation"
@@ -23,7 +22,6 @@ type AboutId =
 
 type AboutRoute =
   | "/about/overview"
-  | "/about/company-overview"
   | "/about/our-presence"
   | "/about/careers"
   | "/about/technology-transformation"
@@ -57,9 +55,9 @@ const PAGES: AboutPage[] = [
     image: hero1,
     sections: [
       {
-        heading: "Our Experience",
+        heading: "Overview",
         intro:
-          "We support sourcing and procurement, supplier coordination, technology requirements, import and export activities, logistics, and project execution. Through our network of local and international partners, we facilitate the acquisition, movement, implementation, and delivery of products and services across multiple markets.",
+          "Based in Dubai and connected to markets across Africa, Alkokab brings together technology, sourcing, trade, logistics, finance, and operational capabilities to support organizations with complex business and project requirements.",
       },
       {
         heading: "Where We Operate",
@@ -205,22 +203,6 @@ const PAGES: AboutPage[] = [
     ],
   },
   {
-    id: "company-overview",
-    path: "/about/company-overview",
-    title: "Overview",
-    kicker: "A Business Built to Connect Expertise, Resources, and Execution",
-    description:
-      "Based in Dubai and connected to markets across Africa, Alkokab brings together technology, sourcing, trade, logistics, finance, and operational capabilities to support organizations with complex business and project requirements.",
-    image: hero2,
-    sections: [
-      {
-        heading: "Our Experience",
-        intro:
-          "We support sourcing and procurement, supplier coordination, technology requirements, import and export activities, logistics, and project execution. Through our network of local and international partners, we facilitate the acquisition, movement, implementation, and delivery of products and services across multiple markets.",
-      },
-    ],
-  },
-  {
     id: "our-presence",
     path: "/about/our-presence",
     title: "Our Experience",
@@ -313,7 +295,6 @@ const PAGES: AboutPage[] = [
 
 const OTHER_ABOUTS = [
   { id: "overview" as AboutId, path: "/about/overview" as AboutRoute, kicker: "Company Overview", title: "About Alkokab Tech" },
-  { id: "company-overview" as AboutId, path: "/about/company-overview" as AboutRoute, kicker: "Overview", title: "Overview" },
   { id: "our-presence" as AboutId, path: "/about/our-presence" as AboutRoute, kicker: "Our Experience", title: "Our Experience" },
 ];
 
