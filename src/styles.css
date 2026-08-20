@@ -234,3 +234,15 @@
     background-image: var(--gradient-gold);
   }
 }
+
+@keyframes gold-glow-spin {
+  0% { box-shadow: 0 0 8px 2px oklch(0.78 0.12 85 / 0.5), inset 0 0 6px 1px oklch(0.78 0.12 85 / 0.15); }
+  25% { box-shadow: 0 0 14px 4px oklch(0.78 0.12 85 / 0.7), inset 0 0 8px 2px oklch(0.78 0.12 85 / 0.2); }
+  50% { box-shadow: 0 0 8px 2px oklch(0.78 0.12 85 / 0.5), inset 0 0 6px 1px oklch(0.78 0.12 85 / 0.15); }
+  75% { box-shadow: 0 0 14px 4px oklch(0.78 0.12 85 / 0.7), inset 0 0 8px 2px oklch(0.78 0.12 85 / 0.2); }
+  100% { box-shadow: 0 0 8px 2px oklch(0.78 0.12 85 / 0.5), inset 0 0 6px 1px oklch(0.78 0.12 85 / 0.15); }
+}
+
+@utility glow-gold {
+  animation: gold-glow-spin 2.5s ease-in-out infinite;
+}

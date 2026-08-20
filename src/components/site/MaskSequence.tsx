@@ -134,7 +134,7 @@ function PartnerContent() {
         initiative to delivered outcome.
       </p>
       <a
-        href="#contact"
+        href="/#contact"
         className="group inline-flex items-center gap-3 bg-gold px-8 py-4 text-[12.5px] font-bold uppercase tracking-[0.14em] text-accent-foreground transition-transform duration-500 hover:-translate-y-0.5"
         style={{ transitionTimingFunction: `cubic-bezier(${EASE.join(",")})` }}
       >

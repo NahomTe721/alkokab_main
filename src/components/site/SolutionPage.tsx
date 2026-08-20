@@ -183,7 +183,7 @@ function SolutionHero({ solution }: { solution: Solution }) {
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <a
-              href="#contact"
+              href="/#contact"
               className="group inline-flex items-center gap-3 bg-gold px-7 py-4 text-[13px] font-bold uppercase tracking-[0.14em] text-accent-foreground transition-all duration-500"
               style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
             >
