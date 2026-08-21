@@ -86,22 +86,22 @@ function PortalContent({ headingOpacity, boxesOpacity, imageOpacity }: LayerProp
           alt="Large-scale project delivery coordinated across systems and operations"
           className="h-full w-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-primary/75" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center overflow-y-auto px-4 py-10 text-center sm:px-8">
+        <div className="absolute inset-0 bg-primary/80" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center overflow-y-auto px-3 py-6 text-center sm:px-8 sm:py-10">
           <span className="eyebrow text-accent">Our Services</span>
-          <h2 className="mx-auto mt-3 max-w-3xl font-display text-base font-extrabold leading-tight text-primary-foreground sm:text-2xl lg:text-3xl">
+          <h2 className="mx-auto mt-2 max-w-3xl px-2 font-display text-sm font-extrabold leading-tight text-primary-foreground sm:text-2xl lg:text-3xl">
             Comprehensive solutions delivered across every stage of the project lifecycle.
           </h2>
-          <div className="mt-6 grid max-w-5xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-4 grid max-w-5xl grid-cols-3 gap-2 px-2 sm:gap-3">
             {SERVICES.map((s) => (
               <div
                 key={s.title}
-                className="flex flex-col items-start gap-2 border border-primary-foreground/15 bg-primary/60 px-5 py-5 text-left sm:px-6 sm:py-6"
+                className="flex flex-col items-start gap-1 border border-primary-foreground/15 bg-primary/60 px-2 py-2 text-left sm:px-4 sm:py-3"
               >
-                <span className="font-display text-[11px] font-bold uppercase tracking-wider text-accent sm:text-xs">
+                <span className="block font-display text-[9px] font-extrabold uppercase tracking-wider text-accent sm:text-[11px]">
                   {s.title}
                 </span>
-                <span className="text-[11px] leading-relaxed text-primary-foreground/75 sm:text-[12.5px]">
+                <span className="mt-1 block text-[8px] font-medium leading-snug text-primary-foreground/75 sm:text-[11px] sm:leading-relaxed">
                   {s.copy}
                 </span>
               </div>
