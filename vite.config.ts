@@ -25,7 +25,11 @@ export default defineConfig({
       },
     }),
     // Build-only: emits a deployable server bundle via Nitro.
-    nitro(),
+    nitro({
+      config: {
+        port: process.env.PORT || process.env.NITRO_PORT || 3000,
+      },
+    }),
     viteReact(),
     tailwindcss(),
   ],
